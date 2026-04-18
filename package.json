@@ -1,0 +1,34 @@
+{
+  "name": "prompt-eval",
+  "version": "0.1.0",
+  "description": "Prompt-injection eval harness — runs a curated attack corpus against an LLM target and scores defense posture over time using Claude-as-judge.",
+  "type": "module",
+  "bin": {
+    "prompt-eval": "./bin/prompt-eval.js"
+  },
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node bin/prompt-eval.js",
+    "eval:brain": "node bin/prompt-eval.js run --target brain --url http://localhost:3005",
+    "eval:report": "node bin/prompt-eval.js report"
+  },
+  "keywords": [
+    "prompt-injection",
+    "llm-security",
+    "ai-security",
+    "red-team",
+    "eval-harness",
+    "agent-security",
+    "owasp-llm"
+  ],
+  "author": "Arthur Abrego",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "kleur": "^4.1.5"
+  }
+}
