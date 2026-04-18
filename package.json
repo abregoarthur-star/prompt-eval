@@ -1,6 +1,6 @@
 {
   "name": "@dj_abstract/prompt-eval",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Prompt-injection eval harness — runs a curated attack corpus against an LLM target and scores defense posture over time using Claude-as-judge.",
   "type": "module",
   "bin": {
@@ -41,7 +41,9 @@
   ],
   "author": "Arthur Abrego",
   "license": "MIT",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
     "kleur": "^4.1.5"

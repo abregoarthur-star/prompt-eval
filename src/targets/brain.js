@@ -18,7 +18,7 @@ export function brainTarget(spec) {
       const res = await fetch(`${url}/query${useSdk ? '?sdk=true' : ''}`, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ query: prompt }),
+        body: JSON.stringify({ message: prompt }),
       });
       const ms = Date.now() - t0;
       if (!res.ok) {
