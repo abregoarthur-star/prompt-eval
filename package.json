@@ -1,20 +1,35 @@
 {
-  "name": "prompt-eval",
+  "name": "@dj_abstract/prompt-eval",
   "version": "0.1.0",
   "description": "Prompt-injection eval harness — runs a curated attack corpus against an LLM target and scores defense posture over time using Claude-as-judge.",
   "type": "module",
   "bin": {
-    "prompt-eval": "./bin/prompt-eval.js"
+    "prompt-eval": "bin/prompt-eval.js"
   },
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "exports": {
     ".": "./src/index.js"
   },
+  "files": [
+    "bin/",
+    "src/",
+    "baselines/",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "start": "node bin/prompt-eval.js",
     "eval:brain": "node bin/prompt-eval.js run --target brain --url http://localhost:3005",
     "eval:report": "node bin/prompt-eval.js report"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abregoarthur-star/prompt-eval.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abregoarthur-star/prompt-eval/issues"
+  },
+  "homepage": "https://github.com/abregoarthur-star/prompt-eval#readme",
   "keywords": [
     "prompt-injection",
     "llm-security",

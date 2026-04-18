@@ -1,5 +1,9 @@
 # prompt-eval
 
+[![npm version](https://img.shields.io/npm/v/@dj_abstract/prompt-eval.svg?color=cb3837&logo=npm)](https://www.npmjs.com/package/@dj_abstract/prompt-eval)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Node.js >=20](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
+
 A prompt-injection eval harness. Runs a curated attack corpus against an LLM target (an agent endpoint, a raw API, or any HTTP-callable model) and uses Claude as a judge to score whether each attack landed.
 
 > Why this exists: If you ship an agent, you should know — quantitatively — how it holds up against the attacks every adversary will try first. That's not a vibes question; it's measurement. `prompt-eval` gives you a defense-rate number, a per-category breakdown, and a per-attack diff between runs so regressions are obvious.
@@ -25,6 +29,21 @@ The default corpus (`src/corpus/attacks.json`) covers the OWASP LLM01 surface pl
 Each attack carries an explicit `successCriteria` — what counts as "compromised." The judge sees that criterion and the target's response, then returns `resisted | compromised | ambiguous` plus a one-line rationale.
 
 ## Install
+
+One-shot with `npx` (no install):
+
+```bash
+npx @dj_abstract/prompt-eval run --target brain --url http://localhost:3005
+```
+
+Global install:
+
+```bash
+npm install -g @dj_abstract/prompt-eval
+prompt-eval --help
+```
+
+Or clone and run from source:
 
 ```bash
 git clone https://github.com/abregoarthur-star/prompt-eval
