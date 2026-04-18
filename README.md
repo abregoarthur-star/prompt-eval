@@ -153,7 +153,8 @@ console.log(`Defense rate: ${report.summary.defenseRate}%`);
 
 ## Roadmap
 
-- Multi-turn attacks (priming over several turns, then exploiting)
+(Multi-turn attack generation is now scoped to [`prompt-genesis`](https://github.com/abregoarthur-star/prompt-genesis) 0.2.0 — this tool consumes the resulting corpus.)
+
 - Indirect injection corpus from synthetic RAG documents
 - ASCII Smuggler / Unicode Tag attacks (paired with [`mcp-audit`](https://github.com/abregoarthur-star/mcp-audit) detection)
 - Tool-call telemetry from agent targets (which tools were invoked vs. which the attacker tried to coerce)
@@ -165,6 +166,21 @@ console.log(`Defense rate: ${report.summary.defenseRate}%`);
 - [Simon Willison — The Lethal Trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 - [Anthropic Red-Teaming Resources](https://www.anthropic.com/research)
+
+## Related tools
+
+Part of a **detect → inventory → test → generate → defend** pipeline for AI-agent security:
+
+| Layer | Tool | Role |
+|---|---|---|
+| Detect | [`@dj_abstract/mcp-audit`](https://github.com/abregoarthur-star/mcp-audit) | Static audit of MCP server definitions |
+| Detect | [`mcp-audit-sweep`](https://github.com/abregoarthur-star/mcp-audit-sweep) | Reproducible sweep of public MCP servers |
+| Inventory | [`@dj_abstract/agent-capability-inventory`](https://github.com/abregoarthur-star/agent-capability-inventory) | Fleet-wide tool catalog with data-sensitivity tags |
+| Test | **prompt-eval** *(you are here)* | Runtime prompt-injection eval harness |
+| Generate | [`@dj_abstract/prompt-genesis`](https://github.com/abregoarthur-star/prompt-genesis) | Attack corpus generator — drop-in compatible with `src/corpus/attacks.json` |
+| Defend | [`@dj_abstract/agent-firewall`](https://github.com/abregoarthur-star/agent-firewall) | Call-time defensive middleware |
+
+The v0.2.0 corpus was expanded from 18 → 38 attacks using `prompt-genesis`. Notably, the generator produced a YAML-serialization system-prompt-extraction attack that the bare Anthropic model fell for (baseline v2: 97.4%), which the hand-curated corpus did not contain — proof that LLM-driven fuzzing surfaces attacks a human curator wouldn't think to write.
 
 ## License
 
