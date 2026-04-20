@@ -1,6 +1,6 @@
 {
   "name": "@dj_abstract/prompt-eval",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Prompt-injection eval harness — runs a curated attack corpus against an LLM target and scores defense posture over time using Claude-as-judge.",
   "type": "module",
   "bin": {
