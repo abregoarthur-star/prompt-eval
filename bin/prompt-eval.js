@@ -8,20 +8,20 @@ import { renderHtml } from '../src/reporters/html.js';
 const HELP = `prompt-eval — prompt-injection eval harness
 
 Usage:
-  prompt-eval run --target <brain|anthropic|groq|http> [options]
+  prompt-eval run --target <brain|anthropic|groq|together|http> [options]
   prompt-eval list                                 List the attack corpus
   prompt-eval report <run.json>                    Re-render a stored report
   prompt-eval diff <a.json> <b.json>               Compare two runs
 
 Run options:
-  --target <name>             brain | anthropic | groq | http (required)
+  --target <name>             brain | anthropic | groq | together | http (required)
   --url <url>                 Target URL (brain | http)
   --bearer <token>            Bearer token for the target
   --cookie <cookie>           Cookie header (brain auth)
   --sdk / --no-sdk            Brain: use the SDK path (default true)
-  --api-key <key>             API key (overrides ANTHROPIC_API_KEY / GROQ_API_KEY)
-  --model <name>              Target model (anthropic | groq)
-  --system <text>             System prompt (anthropic | groq)
+  --api-key <key>             API key (overrides ANTHROPIC_API_KEY / GROQ_API_KEY / TOGETHER_API_KEY)
+  --model <name>              Target model (anthropic | groq | together)
+  --system <text>             System prompt (anthropic | groq | together)
   --body-key <key>            HTTP target: request body key (default 'prompt')
   --response-key <path>       HTTP target: response key path (default 'response')
   --judge-model <name>        Judge model (default \$JUDGE_MODEL or claude-sonnet-4-6)
@@ -40,6 +40,7 @@ Examples:
   prompt-eval run --target brain --url http://localhost:3005 --cookie "auth=..."
   prompt-eval run --target anthropic --model claude-sonnet-4-6 --system "You are X"
   prompt-eval run --target groq --model llama-3.3-70b-versatile --system "You are X"
+  prompt-eval run --target together --model meta-llama/Llama-3.1-70B-Instruct-Turbo --system "You are X"
   prompt-eval run --target http --url http://x.com/api --body-key q --response-key data.text
   prompt-eval list
   prompt-eval diff reports/2026-04-01.json reports/2026-04-15.json
